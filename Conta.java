@@ -12,35 +12,35 @@ O último dígito do valor encontrado em (b) é o dígito verificador (Ex:40 →
 public class Conta{
 
     private int numerodaconta;
-    private int saldo;
+    private double saldo;
 
 
-    public Conta(int numerodaconta, int saldo){
+    public Conta(int numerodaconta, double saldo){
         this.numerodaconta = numerodaconta;
         this.saldo = saldo;
 
     }
 
     //Método que calcula e devolve o dígito verificador
-    public int metodoVerificador(int numerodaconta){
-        StringBuilder frase = new StringBuilder(numerodaconta); //aqui uso o StringBuilder para inverter a frase
-        frase.reverse(); //metodo reverse para inverter a frase
-        int reverso = Integer.parseInt(frase.toString()); //converto para int usando o parseInt,
-        int soma = numerodaconta + reverso; //somo o numero da conta com o reverso
-        int result = 0;
-        String rereverse = Interger.toString(soma); //aqui eu faço com que o resultado em int vire string usando o Interger.toString
-        for(int i = 0; i < soma.length(); i++){ //neste for eu crio o i e faco com que ele receba 1 enquanto ele for menor que o length
-            int reresult = Character.getNumericValue(soma.charAt(i)); //aqui eu pego os valores de i
-            result += reresult * (i + 1); // aqui fazemos o reresult recebe as info de result e multiplica os digitos de i 
-        }
-
+    public static void MetodoVerificador(int numerodaconta){
+    StringBuilder frase = new StringBuilder(String.valueOf(numerodaconta)); //aqui uso o StringBuilder para inverter a frase
+    frase.reverse(); //metodo reverse para inverter a frase
+    int reverso = Integer.parseInt(frase.toString()); //converto para int usando o parseInt,
+    int soma = numerodaconta + reverso; //somo o numero da conta com o reverso
+    int result = 0;
+    String rereverse = Integer.toString(soma); //aqui eu faço com que o resultado em int vire string usando o Interger.toString
+    for(int i = 0; i < rereverse.length(); i++){ //neste for eu crio o i e faco com que ele receba 1 enquanto ele for menor que o length
+        int reresult = Character.getNumericValue(rereverse.charAt(i)); //aqui eu pego os valores de i
+        result += reresult * (i + 1); // aqui fazemos o reresult recebe as info de result e multiplica os digitos de i
     }
+        System.out.println(result );
+}
 
     public double getSaldo(){
         return saldo;
     }
 
-    public void setSaldo(int saldo){
+    public void setSaldo(double saldo){
         this.saldo = saldo;
     }
 }
